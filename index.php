@@ -13,18 +13,28 @@
       <input id="search-input" class="search-input" type="text" autocomplete="off" />
     </header>
     <article id="weather" class="weather">
-      <!-- Inject here or replace entire element -->
+      <img id="weather__icon" src="" width="100" height="100" hidden>
+      <h2 id="weather__main"></h2>
+      <p id="weather__description"></p>
+
     </article>
   </main>
   <script src="weather.js"></script>
   <script>
-    $(function() {
-      console.clear();
-      console.log('it works!');
+    $(function() {     
       $('#search-input').on('input', function(){
         const searchInputValue = $('#search-input').val();
+
         $.get( './curl.php?q=' + searchInputValue , function( data ) {
-           console.log(JSON.parse(data));
+           const jsonResponse = JSON.parse(data);
+           console.log(jsonResponse.weather);
+           if (jsonResponse.weather) {
+             $('#weather__main').html(jsonResponse.weather[0].main);
+             $('#weather__description').html(jsonResponse.weather[0].description);
+             $('#weather__icon').attr("src", "http://openweathermap.org/img/wn/" + jsonResponse.weather[0].icon + "@4x.png");
+             $('#weather__icon').show();
+             
+           }
           
         });
       })
