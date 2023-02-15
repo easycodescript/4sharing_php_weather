@@ -13,9 +13,15 @@
       <input id="search-input" class="search-input" type="text" autocomplete="off" />
     </header>
     <article id="weather" class="weather">
-      <img id="weather__icon" src="" width="100" height="100" hidden>
-      <h2 id="weather__main"></h2>
-      <p id="weather__description"></p>
+      <div>
+        <img id="weather__icon" src="" width="100" height="100" hidden>
+      </div>
+      <div>
+        <h2 id="weather__main"></h2>
+      </div>
+      <div>
+        <p id="weather__description"></p>
+      </div>
 
     </article>
   </main>
@@ -33,7 +39,6 @@
              $('#weather__description').html(jsonResponse.weather[0].description);
              $('#weather__icon').attr("src", "http://openweathermap.org/img/wn/" + jsonResponse.weather[0].icon + "@4x.png");
              $('#weather__icon').show();
-             
            }
           
         });

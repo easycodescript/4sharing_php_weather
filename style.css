@@ -1,3 +1,17 @@
+.app__search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.weather {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+
 .search-input {
   box-sizing: border-box;
   width: 100%;
