@@ -1,0 +1,11 @@
+.search-input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 620px;
+  padding: 0.5em 0.5em;
+  border: 2px solid #CCC;
+  border-radius: 0.5em;
+  outline: 0;
+  font-size: 2em;
+  color: #333;
+}
