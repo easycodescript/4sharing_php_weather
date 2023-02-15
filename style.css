@@ -10,6 +10,14 @@
   align-items: center;
 }
 
+.icon-container {
+  position: relative;
+}
+
+#weather__icon {
+  max-width: 100%;
+  height: auto;
+}
 
 .search-input {
   box-sizing: border-box;
@@ -21,4 +29,11 @@
   outline: 0;
   font-size: 2em;
   color: #333;
+}
+
+@media only screen and (min-width: 768px) {
+  .weather {
+    flex-direction: row;
+    gap: 10em;
+  }
 }

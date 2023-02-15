@@ -13,8 +13,8 @@
       <input id="search-input" class="search-input" type="text" autocomplete="off" />
     </header>
     <article id="weather" class="weather">
-      <div>
-        <img id="weather__icon" src="" width="100" height="100" hidden>
+      <div class="icon-container">
+        <img id="weather__icon" src="" hidden>
       </div>
       <div>
         <h2 id="weather__main"></h2>
@@ -33,18 +33,25 @@
 
         $.get( './curl.php?q=' + searchInputValue , function( data ) {
            const jsonResponse = JSON.parse(data);
-           console.log(jsonResponse.weather);
+           console.log(jsonResponse);
            if (jsonResponse.weather) {
-             $('#weather__main').html(jsonResponse.weather[0].main);
-             $('#weather__description').html(jsonResponse.weather[0].description);
-             $('#weather__icon').attr("src", "http://openweathermap.org/img/wn/" + jsonResponse.weather[0].icon + "@4x.png");
-             $('#weather__icon').show();
+             showIt(jsonResponse.weather[0].main, jsonResponse.weather[0].description, jsonResponse.weather[0].icon)
+           } else {
+            showIt('Nothing found :(' , '', '');
            }
           
         });
       })
            
     });
+
+    function showIt(main, description, icon) {
+      $('#weather__main').html(main);
+      $('#weather__description').html(description);
+      const iconUrl= icon != '' ? "http://openweathermap.org/img/wn/" + icon + "@4x.png" : null;
+      $('#weather__icon').attr("src", iconUrl)
+      $('#weather__icon').show();
+    }
   </script>
 </body>
 </html>
