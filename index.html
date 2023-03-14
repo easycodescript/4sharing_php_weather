@@ -11,6 +11,12 @@
   <main class="app">
     <header class="app__search">
       <input id="search-input" class="search-input" type="text" autocomplete="off" />
+      <div class="search-icon">
+        🔍
+      </div>
+      <div class="search-history">
+        history
+      </div>
     </header>
     <article id="weather" class="weather">
       <div class="icon-container">
@@ -20,7 +26,12 @@
         <h2 id="weather__main"></h2>
       </div>
       <div>
-        <p id="weather__description"></p>
+        <h2 id="weather__city"></h2>
+      </div>
+      <div>
+        <p id="weather__description">
+          Nothing found :(
+        </p>
       </div>
 
     </article>
@@ -40,9 +51,13 @@
            const jsonResponse = JSON.parse(data);
            console.log(jsonResponse);
            if (jsonResponse.weather) {
-             showIt(jsonResponse.weather[0].main, jsonResponse.weather[0].description, jsonResponse.weather[0].icon)
+              showIt(jsonResponse.name,
+                jsonResponse.weather[0].main + ', ' + jsonResponse.main.temp + '°',
+                jsonResponse.weather[0].description,
+                jsonResponse.weather[0].icon
+              )
            } else {
-            showIt('Nothing found :(' , '', '');
+            showIt('Nothing found :(' , '', '', '');
            }
           
         });
@@ -50,7 +65,8 @@
            
     });
 
-    function showIt(main, description, icon) {
+    function showIt(city, main, description, icon) {
+      $('#weather__city').html(city);
       $('#weather__main').html(main);
       $('#weather__description').html(description);
       const iconUrl= icon != '' ? "http://openweathermap.org/img/wn/" + icon + "@4x.png" : null;

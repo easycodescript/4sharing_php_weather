@@ -9,9 +9,12 @@ body{
 }
 
 .app__search {
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 3rem;
+  flex-direction: column;
 }
 
 .weather {
@@ -40,6 +43,26 @@ body{
   outline: 0;
   font-size: 2em;
   color: #333;
+  border: var(--green) solid 0.2rem;
+  box-shadow: var(--pink) 0 0.2rem;
+}
+
+.search-history {
+  background-color: var(--pink);
+  color: white;
+  font-size: 1.5rem;
+  width: 80%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: none;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
 }
 
 .footer {
@@ -60,6 +83,8 @@ body{
   transform: translate(-50%,-50%);
   font-size: 2.5rem;
   border-radius: 1rem;
+  border: var(--green) solid 0.2rem;
+  box-shadow: var(--pink) 0 0.2rem;
 }
 
 
