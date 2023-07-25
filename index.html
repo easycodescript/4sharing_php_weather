@@ -46,7 +46,11 @@
     $(function() {     
       $('#search-input').on('input', function(){
         const searchInputValue = $('#search-input').val();
-
+        $.ajaxSetup({
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+          }
+        })
         $.get( './curl.php?q=' + searchInputValue , function( data ) {
            const jsonResponse = JSON.parse(data);
            console.log(jsonResponse);

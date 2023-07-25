@@ -7,6 +7,8 @@ function getWeather($location){
     CURLOPT_URL => "https://api.openweathermap.org/data/2.5/weather?q=$location&units=metric&appid=042559fc8f13bd0e86e557aa02965a24",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_SSL_VERIFYHOST => false,
+    CURLOPT_SSL_VERIFYPEER => false,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
     CURLOPT_TIMEOUT => 30,
