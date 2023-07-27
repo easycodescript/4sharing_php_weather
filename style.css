@@ -6,6 +6,15 @@
 
 body{
   background-color: var(--beige);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app {
+  min-width: 20rem;
+  margin-bottom: 5rem;
 }
 
 .app__search {
@@ -13,30 +22,18 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 1rem;
   flex-direction: column;
 }
 
-.weather {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.icon-container {
+.search-imput-wrapper {
   position: relative;
-}
-
-#weather__icon {
-  max-width: 100%;
-  height: auto;
+  width: 90%;
 }
 
 .search-input {
   box-sizing: border-box;
-  width: 90%;
-  max-width: 620px;
+  width: 100%;
   padding: 0.5em 0.5em;
   border: 2px solid #CCC;
   border-radius: 0.5em;
@@ -45,6 +42,15 @@ body{
   color: #333;
   border: var(--green) solid 0.2rem;
   box-shadow: var(--pink) 0 0.2rem;
+}
+
+.search-icon-wrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) ;
+  right: 1rem;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
 }
 
 .search-history {
@@ -56,30 +62,47 @@ body{
   border-radius: 0.5rem;
   display: none;
 }
+.weather {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+}
 
-.search-icon {
-  position: absolute;
-  top: 50%;
-  right: 2rem;
-  transform: translateY(-50%);
-  font-size: 2.5rem;
+.icon-container {
+  position: relative;
+}
+
+#weather__icon {
+  max-width: 5rem;
+  height: auto;
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5rem;
+  text-align: center;
+}
+
+.footer__color-bar {
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2.5rem;
   background-color: var(--green);
-  text-align: center;
 }
 
-.home-icon {
+.footer__home-icon {
   position: absolute;
   background-color: white;
   padding: 0.1rem;
   left: 50%;
+  top: 50%;
   transform: translate(-50%,-50%);
   font-size: 2.5rem;
   border-radius: 1rem;
@@ -87,10 +110,15 @@ body{
   box-shadow: var(--pink) 0 0.2rem;
 }
 
-
 @media only screen and (min-width: 768px) {
+  .app {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
   .weather {
     flex-direction: row;
-    gap: 10em;
+    gap: 2rem;
   }
 }

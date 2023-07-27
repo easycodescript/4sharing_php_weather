@@ -10,9 +10,14 @@
 <body>
   <main class="app">
     <header class="app__search">
-      <input id="search-input" class="search-input" type="text" autocomplete="off" />
-      <div class="search-icon">
-        🔍
+      <div class="search-imput-wrapper">
+        <input id="search-input" class="search-input" type="text" placeholder="Insert a city" autocomplete="off" />
+        <div class="search-icon-wrapper">
+          <div id="search-icon">
+            🔍
+          </div>
+          <img id="spinner" src="./spinner.gif" hidden>
+        </div>
       </div>
       <div class="search-history">
         history
@@ -30,53 +35,17 @@
       </div>
       <div>
         <p id="weather__description">
-          Nothing found :(
         </p>
       </div>
 
     </article>
     <footer class="footer">
-      <div class="home-icon">
+      <div class="footer__color-bar"></div>
+      <div class="footer__home-icon" id="home-icon">
         🏠
       </div>
     </footer>
   </main>
   <script src="weather.js"></script>
-  <script>
-    $(function() {     
-      $('#search-input').on('input', function(){
-        const searchInputValue = $('#search-input').val();
-        $.ajaxSetup({
-            headers: {
-              'Access-Control-Allow-Origin': '*'
-          }
-        })
-        $.get( './curl.php?q=' + searchInputValue , function( data ) {
-           const jsonResponse = JSON.parse(data);
-           console.log(jsonResponse);
-           if (jsonResponse.weather) {
-              showIt(jsonResponse.name,
-                jsonResponse.weather[0].main + ', ' + jsonResponse.main.temp + '°',
-                jsonResponse.weather[0].description,
-                jsonResponse.weather[0].icon
-              )
-           } else {
-            showIt('Nothing found :(' , '', '', '');
-           }
-          
-        });
-      })
-           
-    });
-
-    function showIt(city, main, description, icon) {
-      $('#weather__city').html(city);
-      $('#weather__main').html(main);
-      $('#weather__description').html(description);
-      const iconUrl= icon != '' ? "http://openweathermap.org/img/wn/" + icon + "@4x.png" : null;
-      $('#weather__icon').attr("src", iconUrl)
-      $('#weather__icon').show();
-    }
-  </script>
 </body>
 </html>
